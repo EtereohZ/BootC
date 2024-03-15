@@ -9,13 +9,23 @@ precios = {'Notebook': 700000,
 'Tarjeta de Video': 1500000}
 
 filtrado = {}
+filtros = []
 for k, v in precios.items():
-    if sys.argv[2] == "menor":
+
+    if len(sys.argv) < 3:  #Para tomar > al umbral
+        if v > int(sys.argv[1]):
+            filtrado[k] = v
+            filtros.append(k)
+
+    elif sys.argv[2] == "menor": #para < al umbral
         filtrado[k] = v
-        print(k)
-        print(f"Los productos menores al umbral son {k}")
-    elif v > int(sys.argv[1]):
-        filtrado[k] = v
-        print(f"Los productos mayores al umbral son {k}")
-    # if (comando != "menor") or (len(comando) == " "):
-    #     print("Lo siento, esta operración no es valida")
+        filtros.append(k)
+
+    else:
+        print("lo sentimos, servicio no disponible")  #Despues de varios intentos, no pude lograr que al ingresar alguna letra en sys.argv[1] indicara al usuario que la operación no es valida
+        break
+
+if len(sys.argv) <3:
+    print(f"Los productos mayores al umbral son {filtros}")
+elif sys.argv[2] == "menor":
+    print(f"Los productos menores al umbral son {filtros}")
