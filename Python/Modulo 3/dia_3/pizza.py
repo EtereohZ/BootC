@@ -1,19 +1,20 @@
 import ingredientes as i
 
 class Pizza():
-    ingredientes = ""
+    ingredientes = "None"
     tamaño = "Familiar"
-    masa = ""
+    masa = "None"
+    precio = 10000
 
     @staticmethod
-    def validador(string, lista):
+    def validador(string, lista): #Esta función valida si el ingrediente ingresado esta en la lista de ingredientes
         if string in lista:
             return True
         else:
             print("Este ingrediente no esta disponible o no se encuentra. Intentalo de nuevo.")
             return False
     
-    def pedido(self):
+    def pedido(self): #En esta función se irán preguntando los ingredientes para armar la pizza
         valido = False
         while valido == False:
             masa = input(f"Ingrese el tipo de masa que desea: {", ".join(i.lista_masas)})\n")
@@ -34,6 +35,7 @@ class Pizza():
             vegetal2 = input(f"Ingrese el segundo ingrediente vegetal que desea: {", ".join(i.lista_vegetales)}\n")
             valido = Pizza.validador(vegetal2, i.lista_vegetales)
             self.ingrediente_3 = vegetal2
+            self.valida = True
         # print(self.masa)
         # print(self.ingrediente_1)
         # print(self.ingrediente_2)
@@ -42,6 +44,6 @@ class Pizza():
 
 
 
-pizza_orden = Pizza()
-pizza_orden.pedido()
+# pizza_orden = Pizza()
+# pizza_orden.pedido()
     
