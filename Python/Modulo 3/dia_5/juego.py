@@ -19,17 +19,43 @@ continuar = int(input("""Empezamos?
 1. Si
 2. Mejor me voy\n"""))
 
-
-nombres_orco = ["Jaime", "Antonio", "Julio", "Pedro", "Juan", "John"]
-n_o = random.choice(nombres_orco)
-orco = Personajes(n_o)
-orco.nivel = (random.randint(0, 2)+ jugador.nivel)
-
-# calculo = jugador.probabilidad_ganar
-
 while continuar == 1:
-    print(f"""
-¡Vaya!, ¡ha aparecido un Orco llamado {orco.nombre}!
-Es de nivel {orco.nivel}
+    nombres_orco = ["Jaime", "Antonio", "Julio", "Pedro", "Juan", "Alberto"]
+    n_o = random.choice(nombres_orco)
+    orco = Personajes(n_o)
+    orco.nivel = (random.randint(-1, 2)+ jugador.nivel)
 
-""")
+    probabilidad_ganar = jugador.probabilidad_ganar(orco)
+    print(f"""
+-------------------------------------------------         
+¡Vaya!, ¡ha aparecido un Orco llamado {orco.nombre}!
+
+    {orco.nombre} el orco      
+    -Nivel {orco.nivel}
+    
+
+    {jugador.nombre}           
+    -Nivel {jugador.nivel}
+    -{jugador.exp} puntos de experiencia
+   
+    """)
+    dialogo = jugador.dialogo(probabilidad_ganar)
+    if dialogo == 1:
+        chance = random.uniform(0, 1)
+        if chance < probabilidad_ganar:
+            print(f"""¡Has vencido al orco!
++50 exp""")
+            jugador.stats = 50
+        else:
+            print(f"""El orco te ha derotado.
+-30 exp""")
+            jugador.stats = -30
+    continuar = int(input(f"""Deseas continuar?
+                          1. Sí
+                          2. No
+                          """))
+
+
+else:
+    print("Te fuiste a tu casa a vivir en paz y harmonía.")
+    

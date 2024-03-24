@@ -15,15 +15,20 @@ class Personajes():
     def stats(self, experiencia):
         self.exp += experiencia
         temp_exp = 0
-        temp_exp += self.exp 
+        temp_exp = self.exp 
         if self.exp >= 100:
             leveling = temp_exp // 100
             self.nivel += leveling
             self.exp = temp_exp % 100
+
         elif self.exp < 0 and self.nivel > 1:
             leveling = temp_exp // 100
             self.nivel += leveling
+            self.exp = 100 + temp_exp
+
+        elif self.exp < 0 and self.nivel == 1:
             self.exp = 0
+
         else:
             pass
     
@@ -40,12 +45,12 @@ class Personajes():
     def dialogo(probabilidad_ganar):
         return int(input(f"""
 Tienes probabilidades de {probabilidad_ganar} de ganar esta batalla
-Ganarás 50 exp si ganas
-Perderas 30 exp si pierdes
+Ganarás 50 exp si ganas.
+Perders 30 exp si pierdes.
 
 ¿Que harás?
 1. Atacar
-2. Huir """))
+2. Huir\n"""))
 
     def __gt__(self, other):
         if self.nivel > other.nivel:
