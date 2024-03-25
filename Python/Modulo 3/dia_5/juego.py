@@ -30,15 +30,15 @@ while continuar == 1:
 -------------------------------------------------         
 ¡Vaya!, ¡ha aparecido un Orco llamado {orco.nombre}!
 
-    {orco.nombre} el orco      
-    -Nivel {orco.nivel}
+        {orco.nombre} el orco      
+        -Nivel {orco.nivel}
     
 
-    {jugador.nombre}           
-    -Nivel {jugador.nivel}
-    -{jugador.exp} puntos de experiencia
+        {jugador.nombre}           
+        -Nivel {jugador.nivel}
+        -{jugador.exp} puntos de experiencia
    
-    """)
+        """)
     dialogo = jugador.dialogo(probabilidad_ganar)
     if dialogo == 1:
         chance = random.uniform(0, 1)
@@ -47,13 +47,15 @@ while continuar == 1:
 +50 exp""")
             jugador.stats = 50
         else:
-            print(f"""El orco te ha derotado.
+            print(f"""
+-------------------------------------------------
+El orco te ha derotado.
 -30 exp""")
             jugador.stats = -30
     continuar = int(input(f"""Deseas continuar?
-                          1. Sí
-                          2. No
-                          """))
+1. Sí
+2. No
+"""))
 
 
 else:
