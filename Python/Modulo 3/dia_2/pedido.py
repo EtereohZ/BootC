@@ -28,6 +28,6 @@ Gracias por elegirnos a nosotros para su maravilloso té.
 El té que ha elegido es {sabor_te}, este es un té muy especial, su recomendación es {recomendacion}.
 Su tiempo de preparación es de {tiempo} minutos, y tiene una duración de {Te.duracion} días
 El precio de los {masa}gr elegidos corresponde a ${precio}.
-Que tengas un Texcelente día!
+Que tengas un Téxcelente día!
 
 """)
