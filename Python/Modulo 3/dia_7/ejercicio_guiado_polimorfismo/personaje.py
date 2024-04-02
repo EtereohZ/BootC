@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 class Personaje(ABC):
-    def __init__(self, hp:int, atk:int, df:int, arma:str = ""):
+    def __init__(self, hp:int, atk:int, df:int, arma:str="") -> None:
         self.hp = hp
         self.atk = atk
         self.df = df
@@ -12,9 +12,5 @@ class Personaje(ABC):
         pass
 
     @abstractmethod
-    def defensa(self):
-        pass
-
-    @abstractmethod
-    def ataque(self):
+    def defensa(self, ataque:int):
         pass

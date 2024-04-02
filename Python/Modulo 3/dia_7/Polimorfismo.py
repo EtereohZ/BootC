@@ -17,6 +17,6 @@ class PelotaDeJuguete(PelotaDePlastico):
 p = PelotaDeJuguete()
 p.rebotar(10) #Uso el metodo de la clase
 print(p.rebotes)
-super(type(p), p).rebotar(5) #traigo el comportamiento de la clase padre
-#El super() necesita el tipo de la instancia seguido de coma, la instancia u al final .metodo
+super(type(p), p).rebotar(5) #Traigo el comportamiento de la clase padre
+                             #El super() necesita el tipo de la instancia seguido de coma, la instancia u al final .metodo
 print(p.rebotes)

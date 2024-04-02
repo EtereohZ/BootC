@@ -33,6 +33,10 @@ class Gratis(Membresia):
 
     def cambiar_membresia(self, membresia):
         if membresia > 0 and membresia <= 4:
+            if isinstance(self, Familiar):
+                self.dias_regalo = 7
+            elif isinstance(self, Pro):
+                self.dias_regalo = 14
             return self.crear_membresia(membresia)
         else:
             return self
@@ -47,6 +51,10 @@ class Basica(Membresia):
 
     def cambiar_membresia(self, membresia):
         if membresia > 1 and membresia <= 4:
+            if isinstance(self, Familiar):
+                self.dias_regalo = 7
+            elif isinstance(self, Pro):
+                self.dias_regalo = 14
             return self.crear_membresia(membresia)
         else:
             return self
@@ -58,6 +66,10 @@ class Familiar(Basica):
 
     def cambiar_membresia(self, membresia):
         if membresia in (1, 3, 4):
+            if isinstance(self, Familiar):
+                self.dias_regalo = 7
+            elif isinstance(self, Pro):
+                self.dias_regalo = 14
             return self.crear_membresia(membresia)
         else:
             return self
@@ -69,6 +81,10 @@ class SinConexion(Basica):
 
     def cambiar_membresia(self, membresia):
         if membresia in (1, 2, 4):
+            if isinstance(self, Familiar):
+                self.dias_regalo = 7
+            elif isinstance(self, Pro):
+                self.dias_regalo = 14
             return self.crear_membresia(membresia)
         else:
             return self

@@ -21,13 +21,14 @@ b = Pelota(4)
 print(a + b)
 
 class Color():
-    def __init__(self, color) -> None:
+    def __init__(self, color, numero) -> None:
         self.color = color
+        self.numero = numero
 
     def __eq__(self, other) -> bool: #Modulo que genera equivalencias, las instancias son distintas, pero con color igual o equivalente
         return self.color == other.color
 
-color1 = Color("rojo")
-color2 = Color("rojo")
+color1 = Color("rojo", 10)
+color2 = Color("rojo", 12)
 
 print(color1 == color2)
