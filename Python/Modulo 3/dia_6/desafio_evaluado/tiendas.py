@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from producto import Productos
 
+
 class Tiendas(ABC):
     @abstractmethod
     def ingresar_productos(self, nombre:str, precio:int, stock:int):
@@ -27,6 +28,7 @@ class Restaurante(Tiendas):
         self.__productos += self.__productos
 
     def listado_productos(self):
+        lista = []
         if len(self.__productos) > 0:
             for i in self.__productos:
                 lista += f"""
@@ -51,14 +53,15 @@ class Farmacia():
         self.__productos = [Productos(producto, precio, stock)]
         for producto in self.__productos:
             if producto in self.__productos:
-                self.__productos[0].stock += stock
+                producto.stock += stock
             else:
-                self.__productos += self.__productos
+                self.__productos.append(producto)
 
     def listado_productos(self):
+        lista = []
         if len(self.__productos) > 0:
             for i in self.__productos:
-                if self.__productos.precio >= 15000:
+                if i.precio >= 15000:
                     envio_gratis = f"¡Envio gratis al solicitar este producto!"
                 lista += f"""
 NOMBRE: {self.__productos.producto}
@@ -74,8 +77,8 @@ PRECIO: {self.__productos.precio}
             p = Productos(nombre, cantidad)
             if p in self.__productos.producto:
                 if self.__productos.stock > 0:
-                    stock_restante = self.__productos.stock - cantidad if stock_restante >= 0 else 0
-                    self.__productos.stock = stock_restante
+                    stock_restante = p.stock - cantidad if stock_restante >= 0 else 0
+                    p.stock = stock_restante
                     print(f"El stock restante es: {stock_restante}")
 
 class Supermercado():
@@ -96,44 +99,40 @@ class Supermercado():
         self.__productos = [Productos(producto, precio, stock)]
         for producto in self.__productos:
             if producto in self.__productos:
-                self.__productos[0].stock += stock
+                producto.stock += stock
             else:
-                self.__productos += self.__productos
+                self.__productos.append(producto)
 
     def listado_productos(self):
-
-        if len(self.__productos) > 0:
-            for i in self.__productos:
-                if self.__productos.stock < 10:
-                    poco_producto = f"¡Quedan pocos"
-                lista += f"""
-NOMBRE: {self.__productos.producto}
-PRECIO: {self.__productos.precio}
+        lista = []
+        poco_producto = ""
+        for i in self.__productos:
+            if i.stock < 10:
+                poco_producto = f"¡Quedan pocos"
+            print(i.producto)
+            lista.append(f"""
+NOMBRE: {i.producto}
+PRECIO: {i.precio}
+STOCK:  {i.stock}
 {poco_producto}
-"""
-            return lista 
-        else:
-            return "No hay stock para este producto"
+""")
+        return lista 
+            # else:
+            #     return "No hay stock para este producto"
         
-    def realizar_venta(self, nombre: str, cantidad: int):
-        p = Productos(nombre, cantidad)
-        if p in self.__productos.producto:
-            if self.__productos.stock > 0:
-                stock_restante = self.__productos.stock - cantidad if stock_restante >= 0 else 0
+    def realizar_venta(self, producto: str, precio:int, cantidad: int):
+        p = Productos(producto, precio, cantidad)
+        if p.producto in p:
+            if p.stock > 0:
+                stock_restante = p.stock - cantidad if stock_restante >= 0 else 0
                 self.__productos.stock = stock_restante
 
-# p = Restaurante("Sushiroll", 600)
+# lista = []
+# p = Supermercado("Sushiroll", 600)
 # p.ingresar_productos("para", 1000, 20)
-# p.ingresar_productos  #Para nuestro atributo nombre (linea26) llamamos a la funcion producto que nos trae el nombre del producto de la tienda
-# print(p)
-# a = Farmacia("cruz", 100)
-# a.ingresar_productos("paradd", 100, 2000)
+# a = Supermercado("calo", 200)
+# a.ingresar_productos("papa", 1244, 400)
+# print(Supermercado.productos())
+# # print(listado_productos())
 
-d = Supermercado("dd", 12)
-a = Supermercado("epa", 14)
-d.ingresar_productos("paracetamol", 121313, 1)
-# print(d.listado_productos())
-# print(d.listado_productos())
-# print(d.productos.producto)
 
-print(d)

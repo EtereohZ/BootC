@@ -34,8 +34,6 @@ while continuar == 1:
     else:
         ingresar_stock = int(input("Ingrese stock: "))
         mi_tienda.ingresar_productos(ingresar_producto, ingresar_precio, ingresar_stock)
-
-    print(f"Tu producto es{mi_tienda.listado_productos}")
     
     continuar = int(input(f"""Deseas agregar otro producto?
 1. Sí
@@ -48,6 +46,7 @@ print(f"""Estos son tus productos
 
 comprar_producto = input(f"¿Que producto quiere comprar?\n")
 comprar_cuantos = int(input(f"¿Cuantos va a comprar?\n"))
-mi_tienda.realizar_venta(comprar_producto, comprar_cuantos)
+precio = ""
 
+mi_tienda.realizar_venta(comprar_producto, precio, comprar_cuantos)
 
