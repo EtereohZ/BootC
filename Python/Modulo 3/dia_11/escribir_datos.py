@@ -14,5 +14,5 @@ except Exception as e:
         log.seek(16)   #??????????????????????????
         print(log.read())
         now = datetime.now()
-        log.write(f"[{now.strftime('%Y/%m/%d %H:%M:%S')}] Error: {e}\n")   #noe.strftime not permite formatear la fecha, con lo que está en parentesis
+        log.write(f"[{now.strftime('%Y/%m/%d %H:%M:%S')}] Error: {e}\n")   #now.strftime not permite formatear la fecha, con lo que está en parentesis
         # log.seek(0)

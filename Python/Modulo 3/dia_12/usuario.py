@@ -4,3 +4,6 @@ class Usuario():
         self.apellidos = apellido
         self.email = email
         self.genero = genero
+
+    def __str__(self):
+        return f"Nombre: {self.nombre}, Apellido: {self.apellido}, Email: {self.email}, Genero: {self.genero}"
