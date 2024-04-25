@@ -1,5 +1,6 @@
 from excepciones_clases import EdadError
 
+
 intentos = 3
 correcto = True
 

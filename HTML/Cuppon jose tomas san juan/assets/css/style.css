@@ -1,0 +1,35 @@
+body {
+    font-family: 'Roboto', sans-serif !important;
+}
+
+nav {
+    background-color: #28A745 !important;
+}
+
+.img-header {
+    height: 50px;
+}
+
+.card {
+    margin-bottom: 10px;
+}
+
+.normal {
+    font-size: 16px;
+    text-align: end;
+}
+
+.dsct {
+ font-size: 20px;
+ color: #28A745;
+ text-align: end;
+}
+
+
+.formulario {
+    background-color: #28A745 !important;
+}
+
+.img-footer {
+    height: 50px;
+}

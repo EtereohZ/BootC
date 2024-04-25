@@ -1,0 +1,26 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    box-sizing: border-box;
+}
+
+.card {
+    font-weight: normal;
+}
+
+icons {
+    background-color: #17A2B8;
+    height: 100px;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+footer {
+    background-color: #E83E8C;
+    height: 150px;    
+}
+
+.footer-img {
+    height: 90%;
+}

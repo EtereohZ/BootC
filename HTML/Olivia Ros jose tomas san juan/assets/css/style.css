@@ -1,0 +1,26 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif !important;
+
+}
+
+.navbar {
+    background-color: #373A3C;
+}
+
+.nav-link {
+    color: #FFFFFF !important;
+}
+
+.bg-image {
+    background-image: url(../img/bg-hero.jpg);
+    background-repeat: no-repeat;
+    height: 630px;
+}
+ .cards {
+    background-color: #17A2B8;
+ }

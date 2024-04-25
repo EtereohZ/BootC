@@ -1,0 +1,61 @@
+
+:root, [data-bs-theme=light] {
+  --bs-dark: #373a3c;
+  --bs-dark-rgb: 55,58,60;
+  --bs-dark-text-emphasis: #161718;
+  --bs-dark-bg-subtle: #D7D8D8;
+  --bs-dark-border-subtle: #AFB0B1;
+}
+
+.navbar-brand {
+  font-family: 'Lobster', sans-serif;
+}
+
+body {
+  font-family: 'Cabin';
+}
+
+
+.btn-dark {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #373a3c;
+  --bs-btn-border-color: #373a3c;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #2F3133;
+  --bs-btn-hover-border-color: #2C2E30;
+  --bs-btn-focus-shadow-rgb: 225,225,226;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #2C2E30;
+  --bs-btn-active-border-color: #292C2D;
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: #373a3c;
+  --bs-btn-disabled-border-color: #373a3c;
+}
+
+.btn-outline-dark {
+  --bs-btn-color: #373a3c;
+  --bs-btn-border-color: #373a3c;
+  --bs-btn-focus-shadow-rgb: 55,58,60;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #373a3c;
+  --bs-btn-hover-border-color: #373a3c;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #373a3c;
+  --bs-btn-active-border-color: #373a3c;
+  --bs-btn-disabled-color: #373a3c;
+  --bs-btn-disabled-bg: transparent;
+  --bs-btn-disabled-border-color: #373a3c;
+}
+
+h2 {
+  border-bottom-style: solid;
+}
+
+footer {
+  background-color: #373a3c;
+}
+ .card {
+  height: 407px;
+  padding: 12px;
+  margin: 5px;
+ }

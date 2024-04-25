@@ -20,7 +20,7 @@ class Employee():
 
 e = Employee("max", 15, 1000, 100) #Si borramos la instancia de "e", en este caso, de Employee(), la instancia "employee_salary" de la clase Salary() dejará de existir
 
-print(e.employee_salary.bonus) #estamos llamando al valor "bonus" dentro del atributo/instancia employee_salary. S
+print(e.employee_salary.bonus) #estamos llamando al valor "bonus" dentro del atributo/instancia employee_salary.
 print(e.name)                   #Se le debe anteponer la instacia de la clase donde se encuentra, seguido de su atributo.
 print(e.total_salary())          #Como también se está comportando como instancia de Salary() podemos llamar sus atributos: pay y bonus
 print()

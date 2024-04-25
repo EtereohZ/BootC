@@ -1,0 +1,23 @@
+pregunta 3
+respuesta: SELECT id FROM public.peliculas where "Pelicula" = 'Titanic';
+
+pregunta 4
+respuesta: select actor, peliculas."Pelicula"  from public.reparto inner join public.peliculas on reparto.id_pelicula = peliculas.id where "Pelicula" = 'Titanic';
+
+pregunta 5 
+respuesta: select count(id_pelicula) from public.reparto where actor = 'Harrison Ford';
+
+pregunta 6
+respuesta: select "Pelicula", "Año estreno" from public.peliculas where "Año estreno" >= 1990 and "Año estreno" <= 1999 order by "Año estreno" asc;
+
+pregunta 7
+respuesta: select "Pelicula", length("Pelicula") as "longitud_titulo" from public.Peliculas;
+
+pregunta 8
+respuesta: select "Pelicula", max(length("Pelicula")) as "longitud_maxima" from public.Peliculas group by "Pelicula" order by "longitud_maxima" desc;
+
+----------------------------------------------
+
+por que select "Pelicula", max(length("Pelicula")) as "longitud_maxima" from public.Peliculas group by "Pelicula"; no sirve?
+
+hace que me aparezcan todas las peliculas.
