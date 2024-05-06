@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+<body>
+    <div class="container" style="padding-top: 10px;">
+        <section>
+            <div data-bss-parallax-bg="true" style="height: 600px;background: url(&quot;assets/img/pasteleros.jpg&quot;) center / cover;">
+                <div class="container h-100">
+                    <div class="row h-100">
+                        <div class="col-md-6 text-center text-md-start d-flex d-sm-flex d-md-flex justify-content-center align-items-center justify-content-md-start align-items-md-center justify-content-xl-center">
+                            <div style="max-width: 350px;">
+                                <h1 class="text-uppercase fw-bold" style="backdrop-filter: blur(13px);">acerca de nosotros</h1>
+                                <p class="my-3" style="backdrop-filter: blur(13px);">Somos una empresa creada el año 2024 por un grupo de pasteleros apasionados por los flanes. ¡Acompañanos en esta aventura donde crearemos los flanes mas ricos del planeta!</p><a class="btn btn-primary btn-lg me-2" role="button" href="/" style="background: rgba(13,110,253,0);backdrop-filter: blur(13px);color: var(--bs-emphasis-color);">Quiero mis flanes</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+</body>
+
+{% endblock body %}
