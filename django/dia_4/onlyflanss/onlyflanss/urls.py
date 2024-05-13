@@ -15,12 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from web.views import indice, acerca, bienvenido, base
+from django.conf import settings
+from django.conf.urls.static import static
+from web.views import inicio, acerca, bienvenido, base, contacto, exito
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', indice ),
-    path('acerca/', acerca),
-    path('bienvenido/', bienvenido),
-    path('base/', base)
+    path('admin', admin.site.urls),
+    path('inicio', inicio, name="inicio"), 
+    path('acerca', acerca, name="acerca"),
+    path('bienvenido', bienvenido, name="bienvenido"),
+    path('contacto', contacto, name='contacto'),
+    path('exito', exito, name="exito"),
+    path('base', base),
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
