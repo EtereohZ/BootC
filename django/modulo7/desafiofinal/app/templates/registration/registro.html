@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<h1>Unete!</h1>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Crear cuenta</button>
+</form>
+
+{% endblock body %}

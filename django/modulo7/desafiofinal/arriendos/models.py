@@ -1,22 +1,22 @@
 from django.contrib.auth.models import AbstractBaseUser ,PermissionsMixin
 from django.db import models
-from django.utils.translation import gettext_lazy as _
 from .managers import CustomUserManager
+from django.db.models.signals import post_save
 
 # Create your models here.
 
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     class TipoUsuario(models.TextChoices):
-        arrendatario = ("ART", _("Arrendatario"))
-        arrendador = ("ARD", _("Arrendador"))
+        arrendatario = ("ART", "Arrendatario")
+        arrendador = ("ARD", "Arrendador")
 
     rut = models.CharField(max_length=10, unique=True)
     nombre = models.CharField(max_length=20, null=False)
     apellido = models.CharField(max_length=20, null=False)
-    direccion = models.CharField(max_length=30)
+    correo = models.CharField(max_length=50, unique=True, null=False)
+    direccion = models.CharField(max_length=80)
     telefono = models.CharField(max_length=20, null=False)
-    correo = models.CharField(max_length=30, unique=True, null=False)
     tipo_usuario = models.CharField(choices=TipoUsuario.choices)
     creado = models.DateTimeField(auto_now_add=True)
     modificado = models.DateTimeField(auto_now=True)
@@ -25,6 +25,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     
     USERNAME_FIELD = "correo"
+    EMAIL_FIELD = "correo"
     REQUIRED_FIELDS = []
     objects = CustomUserManager()
 
@@ -399,9 +400,9 @@ class Comunas(models.TextChoices):
 
 class Inmuebles(models.Model):
     class TipoInmueble(models.TextChoices):
-        departamento = ("DPTO", _("Departamento"))
-        casa = ("CS", _("Casa"))
-        parcela = ("PRCL", _("Parcela"))
+        departamento = ("DPTO", "Departamento")
+        casa = ("CS", "Casa")
+        parcela = ("PRCL", "Parcela")
 
     id_usuario = models.ForeignKey(CustomUser, related_name="inmuebles", on_delete=models.CASCADE)
     nombre = models.CharField(max_length=50, null=False)
@@ -418,6 +419,6 @@ class Inmuebles(models.Model):
     precio_mensual = models.CharField(null=False)
 
     def __str__(self) -> str:
-        return f"{self.nombre}"
+        return f"{self.nombre} - {self.direccion}"
 
 

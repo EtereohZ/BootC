@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CustomUser, Inmuebles
+from .models import CustomUser, Inmuebles, Regiones, Comunas
 
 # Register your models here.
 class CustomUserAdmin(admin.ModelAdmin):
@@ -7,4 +7,5 @@ class CustomUserAdmin(admin.ModelAdmin):
 
 admin.site.register(CustomUser, CustomUserAdmin)
 admin.site.register(Inmuebles)
+
 
