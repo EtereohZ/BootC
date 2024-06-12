@@ -1,3 +1,4 @@
+from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import AbstractBaseUser ,PermissionsMixin
 from django.db import models
 from .managers import CustomUserManager
@@ -23,14 +24,18 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
-    
+    objects = CustomUserManager()
     USERNAME_FIELD = "correo"
     EMAIL_FIELD = "correo"
     REQUIRED_FIELDS = []
-    objects = CustomUserManager()
 
     def __str__(self) -> str:
         return f"{self.rut}- {self.nombre} {self.apellido}"
+    
+class UserProfile(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+
+
 
 class Regiones(models.TextChoices):
     ARICA_Y_PARINACOTA = "Arica y Parinacota", "Arica y Parinacota"

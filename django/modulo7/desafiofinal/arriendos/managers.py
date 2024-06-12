@@ -5,6 +5,7 @@ class CustomUserManager(BaseUserManager):
     
     def create_user(self, correo:str, password:str, **extra_fields):
         correo = self.normalize_email(correo)
+        extra_fields.setdefault("is_active", True)
         user = self.model(correo=correo, **extra_fields)
         user.set_password(password)
         user.save()

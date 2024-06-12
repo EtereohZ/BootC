@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h1>PERFIL</h1>
+<form action="{% url 'perfil' user.correo %}" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button style="margin-top: 20px;" class="btn btn-lg btn-primary btn-block" value="Register" name="submit" type="submit">Iniciar Sesión</button>  
+
+</form>
+ 
+{% endblock body %}

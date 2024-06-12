@@ -1,8 +1,9 @@
-from django.shortcuts import render, redirect, HttpResponseRedirect, get_list_or_404
+from django.shortcuts import render, redirect, HttpResponseRedirect, HttpResponse
 from .models import Inmuebles, CustomUser
-from .forms import CustomUserCreationForm
-from django.contrib import messages
+from .forms import CustomUserCreationForm, UserUpdateForm
+from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 # Create your views here.
 
@@ -22,25 +23,27 @@ def inicio(request):
 
 def registro(request):
     if request.method == 'POST':
+        print(request.POST)
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect('/inicio')
-        messages.success(request, 'Cuenta creada correctamente')
 
     else:
         form = CustomUserCreationForm()
-        context = {'form' : form}
-    return render(request, 'registration/registro.html', context)
+    return render(request, 'registration/registro.html', {'form' : form})
 
-@login_required
-def profile(request, pk):
-    usuario = get_list_or_404(CustomUser, id=pk)
-    
-    context = {}
-    return render(request, 'profile.html', context)
-    pass
-
-@login_required
-def register_profile(request):
-    pass
+@login_required(login_url="/login/")
+def profile(request, correo):
+    if request.method == 'POST':
+        user = request.user
+        form = UserUpdateForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Usuario actualizado")
+            return redirect("perfil", form.correo)
+    user = get_user_model().objects.filter(correo=correo).first()
+    if user:
+        form = UserUpdateForm(instance=user)
+        return render(request, 'registration/profile.html', {'form' : form})
+    return redirect("inicio/")
