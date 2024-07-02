@@ -2,7 +2,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import get_user_model
 from django import forms
 from django.core.exceptions import ValidationError
-from .models import CustomUser
+from .models import CustomUser, Inmuebles, Regiones, Comunas
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -53,3 +53,21 @@ class UserUpdateForm(forms.ModelForm):
     class Meta:
         model = get_user_model()
         fields = ['rut', 'nombre', 'apellido', 'correo', 'direccion', 'telefono']
+
+class InmuebleForm(forms.ModelForm):
+    nombre = forms.CharField(label='Nombre del inmueble', max_length=50)
+    descripcion = forms.CharField(label='Descripción', widget=forms.Textarea(attrs={'cols' : 50}))
+    m2_construidos = forms.CharField(label='m2 Construidos', max_length=10)
+    m2_totales = forms.CharField(label='m2 Totales', max_length=10)
+    cantidad_estacionamientos = forms.CharField(label='Numero de estacionamientos')
+    cantidad_habitaciones = forms.CharField(label='Numero de habitaciones')
+    cantidad_baños = forms.CharField(label='Baños')
+    direccion = forms.CharField(label='Dirección', max_length=30)
+    region = forms.ChoiceField(label='Región', choices=Regiones.choices)
+    comuna = forms.ChoiceField(label='comuna', choices=Comunas.choices)
+    tipo_inmueble = forms.ChoiceField(label='Tipo de inmueble', choices=Inmuebles.TipoInmueble.choices)
+    precio_mensual = forms.CharField(label='precio')
+
+    class Meta():
+        model = Inmuebles
+        fields = ['nombre', 'descripcion', 'm2_construidos', 'm2_totales', 'cantidad_estacionamientos', 'cantidad_habitaciones', 'cantidad_baños', 'direccion', 'region', 'comuna', 'tipo_inmueble', 'precio_mensual']

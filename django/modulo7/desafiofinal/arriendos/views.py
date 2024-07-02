@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, HttpResponseRedirect, HttpResponse
 from .models import Inmuebles, CustomUser
-from .forms import CustomUserCreationForm, UserUpdateForm
+from .forms import CustomUserCreationForm, UserUpdateForm, InmuebleForm
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -47,3 +47,21 @@ def profile(request, correo):
         form = UserUpdateForm(instance=user)
         return render(request, 'registration/profile.html', {'form' : form})
     return redirect("inicio/")
+
+@login_required(login_url="/login/")
+def crear_inmueble(request):
+    if request.method == 'POST':
+        form = InmuebleForm(request.POST)
+        if form.is_valid():
+            formulario = form.save(commit=False)
+            formulario.id_usuario = request.user
+            formulario.save()
+            messages.success(request, 'Inmueble creado correctamente')
+            return redirect("crear_inmueble")
+    else:
+        form = InmuebleForm()
+    return render(request, 'crear_inmueble.html', {'form' : form})
+
+@login_required(login_url="/login/")
+def editar_inmueble():
+    pass

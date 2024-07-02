@@ -21,6 +21,8 @@
         <li class="nav-item {% active_link 'inicio' 'nav-link active' %}"><a class="nav-link active text-light" href="{% url 'inicio' %}">Inicio</a></li>
         <ul class="nav fw-semibold ms-auto">
             {% if user.is_authenticated%}
+            <li class="nav-item {% active_link 'crear_inmueble' 'nav-link active' %}"><a class="nav-link active text-light" href="{% url 'crear_inmueble' %}">Agregar Inmueble</a></li>
+            <li class="nav-item {% active_link 'perfil' 'nav-link active' %}"><a class="nav-link active text-light" href="{% url 'perfil' user.correo %}">Perfil</a></li>
             <li class="nav-item {% active_link 'logout' 'nav-link active' %}"><a class="nav-link active text-light" href="{% url 'logout' %}">Cerrar Sesión</a></li>
             {% else %}
             <li class="nav-item {% active_link 'login' 'nav-link active' %}"><a class="nav-link active text-light" href="{% url 'login' %}">Iniciar Sesión</a></li>

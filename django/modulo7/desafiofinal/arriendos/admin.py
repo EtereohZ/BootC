@@ -4,7 +4,7 @@ from django.contrib.auth.admin import UserAdmin
 
 # Register your models here.
 class CustomUserAdmin(admin.ModelAdmin):
-    readonly_fields = ("creado", "modificado", "last_login")
+    readonly_fields = ("creado", "modificado", "last_login", "password")
     add_fieldsets = UserAdmin.add_fieldsets + (
         (None, {'fields': ('custom_field',)}),
     )

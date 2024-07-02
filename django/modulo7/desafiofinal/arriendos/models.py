@@ -2,7 +2,6 @@ from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import AbstractBaseUser ,PermissionsMixin
 from django.db import models
 from .managers import CustomUserManager
-from django.db.models.signals import post_save
 
 # Create your models here.
 
@@ -30,7 +29,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = []
 
     def __str__(self) -> str:
-        return f"{self.rut}- {self.nombre} {self.apellido}"
+        return f"{self.rut} - {self.nombre} {self.apellido}"
     
 class UserProfile(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
@@ -417,7 +416,7 @@ class Inmuebles(models.Model):
     cantidad_estacionamientos = models.PositiveIntegerField(null=False)
     cantidad_habitaciones = models.PositiveIntegerField(null=False)
     cantidad_baños = models.PositiveIntegerField(null=False)
-    direccion = models.CharField(max_length=20, null=False)
+    direccion = models.CharField(max_length=30, null=False)
     region = models.CharField(choices=Regiones.choices)
     comuna = models.CharField(choices=Comunas.choices)
     tipo_inmueble = models.CharField(choices=TipoInmueble.choices)
