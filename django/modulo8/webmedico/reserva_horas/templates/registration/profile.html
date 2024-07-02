@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h1>bienvenido a tu perfil</h1>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+    {% endfor %}
+</ul>
+{% endif %}
+<form action="{% url 'perfil' user.correo %}" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button style="margin-top: 20px;" class="btn btn-lg btn-primary btn-block" value="Register" name="submit" type="submit">Actualizar datos</button>  
+
+</form>
+ 
+{% endblock body %}

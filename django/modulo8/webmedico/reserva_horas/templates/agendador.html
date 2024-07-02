@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <form class="form-agendar" action="{% url 'crear_agenda' %}" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button value="register" type="submit">Crear nueva agenda</button>
+    </form>
+
+
+{% endblock body %}

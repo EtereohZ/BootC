@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+[% load static %]
+{% block body %}
+
+<h1>Unete!</h1>
+<form class="form-register" action="{% url 'registro' %}" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    {{form.errors}}
+    <button value="register" type="submit">Crear cuenta</button>
+</form>
+
+{% endblock body %}
