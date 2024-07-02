@@ -28,12 +28,15 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     EMAIL_FIELD = "correo"
     REQUIRED_FIELDS = []
 
+    @property
+    def es_arrendador(self):
+        return self.groups.filter(name='Arrendador').exists()
     def __str__(self) -> str:
         return f"{self.rut} - {self.nombre} {self.apellido}"
     
+    
 class UserProfile(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
-
 
 
 class Regiones(models.TextChoices):
