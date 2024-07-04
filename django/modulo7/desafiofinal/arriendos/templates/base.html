@@ -23,7 +23,7 @@
             {% if user.is_authenticated%}
                 {% if user.es_arrendador%}
                     <li class="nav-item {% active_link 'crear_inmueble' 'nav-link active' %}"><a class="nav-link active text-light" href="{% url 'crear_inmueble' %}">Agregar Inmueble</a></li>
-                    <li class="nav-item {% active_link 'editar_inmueble' 'nav-link active' %}"><a class="nav-link active text-light" href="{% url 'editar_inmueble' %}">Editar Inmueble</a></li>
+                    <li class="nav-item {% active_link 'ver_inmuebls' 'nav-link active' %}"><a class="nav-link active text-light" href="{% url 'ver_inmuebles'%}">Ver inmuebles</a></li>
                 {% endif %}
                 <li class="nav-item {% active_link 'perfil' 'nav-link active' %}"><a class="nav-link active text-light" href="{% url 'perfil' user.correo %}">Perfil</a></li>
                 <li class="nav-item {% active_link 'logout' 'nav-link active' %}"><a class="nav-link active text-light" href="{% url 'logout' %}">Cerrar Sesión</a></li>

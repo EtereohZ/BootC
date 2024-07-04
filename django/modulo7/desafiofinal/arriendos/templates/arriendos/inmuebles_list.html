@@ -5,8 +5,8 @@
 
 <div class="container" style="padding-bottom: 30px; margin-top: 20px;">
     <div class="row">
-        <h1 style="align-content: center;">A editar</h1>
-        <form action="{% url 'editar_inmueble' %}" method="post">
+        <h1 style="align-content: center;">Aquí están tus inmuebles:</h1>
+        <form action="{% url 'ver_inmuebles' %}" method="get">
             {% csrf_token %}
             {% if messages %}
                 <ul class="messages">
@@ -15,10 +15,10 @@
                     {% endfor %}
                 </ul>
             {% endif %}
-            {% for i in inmuebles %}
+            {% for o in object_list %}
                 <div class="col" style="margin-top: 10px; margin-bottom: 10px;">
-                    <div>{{i}}</div>
-                    <div style="color: red;">{{i.errors}}</div>
+                    <div>{{o}}</div>
+                    <div style="color: red;">{{o.errors}}</div>
                 </div>
             {% endfor %}
         </form>

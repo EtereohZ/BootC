@@ -73,8 +73,7 @@ class InmuebleForm(forms.ModelForm):
         fields = ['nombre', 'descripcion', 'm2_construidos', 'm2_totales', 'cantidad_estacionamientos', 'cantidad_habitaciones', 'cantidad_baños', 'direccion', 'region', 'comuna', 'tipo_inmueble', 'precio_mensual']
 
 class InmuebleUpdateForm(forms.ModelForm):
-
     class Meta:
         model = Inmuebles
-        fields = '__all__'
+        fields = ['nombre', 'descripcion', 'm2_construidos', 'm2_totales', 'cantidad_estacionamientos', 'cantidad_habitaciones', 'cantidad_baños', 'direccion', 'region', 'comuna', 'tipo_inmueble', 'precio_mensual']
     

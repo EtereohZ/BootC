@@ -4,6 +4,8 @@ from .forms import CustomUserCreationForm, UserUpdateForm, InmuebleForm, Inmuebl
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
 
 # Create your views here.
 
@@ -62,22 +64,18 @@ def crear_inmueble(request):
         form = InmuebleForm()
     return render(request, 'crear_inmueble.html', {'form' : form})
 
-@login_required(login_url="/login/")
-def editar_inmueble(request):
-    if request.method == 'POST':
-        inmueble = type(Inmuebles()).objects.filter(id_usuario = request.user)
-        form = InmuebleUpdateForm(request.POST, instance=inmueble)
-        if form.is_valid():
-            form.save()
-            messages.success(request, "Inmueble actualizado")
-            return redirect("perfil", form.user)
-    inmueble = type(Inmuebles()).objects.filter(id_usuario = request.user).first()
-    if inmueble:
-        form = InmuebleUpdateForm(instance=inmueble)
-        return render(request, 'editar_inmuebles.html', {'form' : form})
-    return redirect("inicio/")
 
-@login_required(login_url="/login/")
-def ver_inmueble(request):
-    inmuebles = Inmuebles.objects.filter(id_usuario = request.user)
-    return render(request, 'ver_inmuebles.html', {"inmuebles" : inmuebles})
+class InmueblesView(ListView):
+    model = Inmuebles
+
+    def listar_inmuebles(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+    
+
+class InmuebleView(DetailView):
+    model = Inmuebles
+    template_name = 'editar_inmueble.html'
+    def listar_inmueble(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context

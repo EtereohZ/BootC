@@ -1,5 +1,8 @@
 from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import AbstractBaseUser ,PermissionsMixin
+from django.utils.text import slugify
+from django.db.models.signals import pre_save
+from django.dispatch import receiver
 from django.db import models
 from .managers import CustomUserManager
 
@@ -412,6 +415,7 @@ class Inmuebles(models.Model):
         parcela = ("PRCL", "Parcela")
 
     id_usuario = models.ForeignKey(CustomUser, related_name="inmuebles", on_delete=models.CASCADE)
+    slug = models.SlugField()
     nombre = models.CharField(max_length=50, null=False)
     descripcion = models.TextField(null=False)
     m2_construidos = models.CharField(max_length=10, null=False)
@@ -427,5 +431,10 @@ class Inmuebles(models.Model):
 
     def __str__(self) -> str:
         return f"{self.nombre} - {self.direccion}"
+    
+@receiver(pre_save, sender=Inmuebles)
+def inmuebles_pre_save(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        instance.slug = slugify(f"{instance.nombre}_{instance.pk}")
 
 
